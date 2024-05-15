@@ -12,10 +12,9 @@ export class IpController {
     const forwardedIps = xForwardedFor
       ? xForwardedFor.split(',').map((ip) => ip.trim())
       : [];
-    const clientIp = request.socket.remoteAddress || '';
 
     return {
-      clientIp,
+      clientIp: forwardedIps[0],
       forwardedIps,
     };
   }
